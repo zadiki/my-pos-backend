@@ -11,13 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('user_permissions', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->foreignId('permission_id')->constrained('permissions')->onDelete('cascade');
-            $table->timestamps();
-            $table->unique(['user_id', 'permission_id']);
-        });
+        if (!Schema::hasTable('user_permissions')) {
+            Schema::create('user_permissions', function (Blueprint $table) {
+                $table->id();
+                $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+                $table->foreignId('permission_id')->constrained('permissions')->onDelete('cascade');
+                $table->timestamps();
+                $table->unique(['user_id', 'permission_id']);
+            });
+        }
     }
 
     /**
