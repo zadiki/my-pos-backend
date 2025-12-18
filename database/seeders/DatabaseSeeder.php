@@ -23,5 +23,8 @@ class DatabaseSeeder extends Seeder
 
         // Seed invoices/payments for purchases and sales
         $this->call([InvoicePaymentSeeder::class]);
+
+        // Seed remaining models
+        $this->call([AllModelsSeeder::class]);
     }
 }
