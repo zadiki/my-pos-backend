@@ -14,6 +14,14 @@ use Illuminate\Http\Request;
  */
 
 /**
+ * @OA\Info(
+ *     version="1.0.0",
+ *     title="My POS App API",
+ *     description="API documentation for My POS App backend."
+ * )
+ */
+
+/**
  * @OA\Tag(
  *     name="Resource",
  *     description="Generic resource operations"

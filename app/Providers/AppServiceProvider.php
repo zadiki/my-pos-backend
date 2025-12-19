@@ -22,7 +22,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         // Enable query logging in local development mode
-        if ($this->app->isLocal()) {
+        if (!$this->app->isLocal()) {
             DB::listen(function ($query) {
                 Log::debug('SQL Query:', [
                     'sql' => $query->sql,

@@ -6,13 +6,13 @@
         "version": "1.0.0"
     },
     "paths": {
-        "/auth/login": {
+        "/api/login": {
             "post": {
                 "tags": [
                     "Auth"
                 ],
                 "summary": "Login user and get JWT token",
-                "operationId": "99d66635c4992aeaa6aa44ff653d0563",
+                "operationId": "222b2625838e3c57e017987f73598fda",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -50,13 +50,13 @@
                 }
             }
         },
-        "/auth/logout": {
+        "/api/logout": {
             "post": {
                 "tags": [
                     "Auth"
                 ],
                 "summary": "Logout user (invalidate token)",
-                "operationId": "6abf3b64a4bc7838d56346f05a5153af",
+                "operationId": "ad65cbbd4e9f201619eae184a5961a98",
                 "responses": {
                     "200": {
                         "description": "Logged out successfully"
@@ -69,13 +69,13 @@
                 ]
             }
         },
-        "/auth/refresh": {
+        "/api/refresh": {
             "post": {
                 "tags": [
                     "Auth"
                 ],
                 "summary": "Refresh JWT token",
-                "operationId": "e7ab7446393758bb71fd1946a349e500",
+                "operationId": "f6409cd8d794404a6410b0767432b0f4",
                 "responses": {
                     "200": {
                         "description": "Token refreshed"
@@ -88,13 +88,13 @@
                 ]
             }
         },
-        "/auth/me": {
+        "/api/me": {
             "get": {
                 "tags": [
                     "Auth"
                 ],
                 "summary": "Get current authenticated user",
-                "operationId": "7edae2cdbaafc10dff8c9c4198b320a2",
+                "operationId": "8367feff40ba10e43187792cad3132c1",
                 "responses": {
                     "200": {
                         "description": "Current user info"
@@ -230,13 +230,131 @@
                 }
             }
         },
-        "/users": {
+        "/sale-payments/{id}": {
+            "put": {
+                "tags": [
+                    "SalePayment"
+                ],
+                "summary": "Update a sale payment",
+                "operationId": "7578ab25db588833ea36e24712f0457a",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Sale payment updated"
+                    },
+                    "404": {
+                        "description": "Sale payment not found"
+                    }
+                }
+            }
+        },
+        "/shops/{id}": {
+            "delete": {
+                "tags": [
+                    "Shop"
+                ],
+                "summary": "Delete a shop",
+                "operationId": "1dfea7acd7d35abd6f3cd0a929d23fe0",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Shop deleted"
+                    },
+                    "404": {
+                        "description": "Shop not found"
+                    }
+                }
+            }
+        },
+        "/suppliers/{id}": {
+            "delete": {
+                "tags": [
+                    "Supplier"
+                ],
+                "summary": "Delete a supplier",
+                "operationId": "f93c2db0ee9f314d86463df419ae8099",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Supplier deleted"
+                    },
+                    "404": {
+                        "description": "Supplier not found"
+                    }
+                }
+            }
+        },
+        "/supplier-products/{id}": {
+            "delete": {
+                "tags": [
+                    "SupplierProduct"
+                ],
+                "summary": "Delete a supplier product",
+                "operationId": "9c873c0656d46448b83b4fe0354129d8",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Supplier product deleted"
+                    },
+                    "404": {
+                        "description": "Supplier product not found"
+                    }
+                }
+            }
+        },
+        "/api/users": {
             "get": {
                 "tags": [
                     "User"
                 ],
                 "summary": "List all users",
-                "operationId": "7208c29037df2b8bb02499ba39ed8a78",
+                "operationId": "566aed8efb436ca506e0ef51a032ecd9",
                 "responses": {
                     "200": {
                         "description": "Successful operation"
@@ -248,7 +366,7 @@
                     "User"
                 ],
                 "summary": "Create a new user",
-                "operationId": "262eb5ca1fdea354023c0a8870442c1e",
+                "operationId": "be551c1d694a01c164966f58bfa77013",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -282,13 +400,13 @@
                 }
             }
         },
-        "/users/{id}": {
+        "/api/users/{id}": {
             "get": {
                 "tags": [
                     "User"
                 ],
                 "summary": "Get a single user",
-                "operationId": "6946bbab7898f59a09e3c8e529a38907",
+                "operationId": "6f51bd5fa2dddcd25e44cfa53dcbd10a",
                 "parameters": [
                     {
                         "name": "id",
@@ -313,7 +431,7 @@
                     "User"
                 ],
                 "summary": "Update a user",
-                "operationId": "05028d02ea3e9a99abd6260cfe05b179",
+                "operationId": "070e37fc9aff78ae73860751bc990ed3",
                 "parameters": [
                     {
                         "name": "id",
@@ -359,7 +477,7 @@
                     "User"
                 ],
                 "summary": "Delete a user",
-                "operationId": "b3d28da5dc9de7fc1bd425f93b54ff7b",
+                "operationId": "0b4133ed462528a5e648b88ead11e929",
                 "parameters": [
                     {
                         "name": "id",
@@ -380,13 +498,13 @@
                 }
             }
         },
-        "/user-permissions": {
+        "/api/user-permissions": {
             "get": {
                 "tags": [
                     "UserPermissions"
                 ],
                 "summary": "Get list of user permissions",
-                "operationId": "0cab25782dc765c4da6fdc8e44e09fee",
+                "operationId": "1325d27a676770e4a297a3b6e02e84c6",
                 "responses": {
                     "200": {
                         "description": "Successful operation"
@@ -398,7 +516,7 @@
                     "UserPermissions"
                 ],
                 "summary": "Create a new user permission",
-                "operationId": "0fdf947537f3842ad9c9c3893e6cbef4",
+                "operationId": "38337680054ae24cbe36926606c92e58",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -416,13 +534,13 @@
                 }
             }
         },
-        "/user-permissions/{id}": {
+        "/api/user-permissions/{id}": {
             "get": {
                 "tags": [
                     "UserPermissions"
                 ],
                 "summary": "Get a user permission by ID",
-                "operationId": "1538ca801f69f8edd1cc1f1d205ef0a0",
+                "operationId": "0a1188354e88466f7ea7aab4e3c3d4e4",
                 "parameters": [
                     {
                         "name": "id",
@@ -447,7 +565,7 @@
                     "UserPermissions"
                 ],
                 "summary": "Update a user permission",
-                "operationId": "60d77ef744833323d0b49ce1ccfeea9c",
+                "operationId": "b2b1564279771e2a729fa6aa4c8a668e",
                 "parameters": [
                     {
                         "name": "id",
@@ -482,7 +600,7 @@
                     "UserPermissions"
                 ],
                 "summary": "Delete a user permission",
-                "operationId": "b01b7dae4ec5a665c2f9bb7582b1d107",
+                "operationId": "9b566ea540cac3a7794ca546920b8aa1",
                 "parameters": [
                     {
                         "name": "id",
@@ -553,6 +671,22 @@
         {
             "name": "UserPermissions",
             "description": "API Endpoints for User Permissions"
+        },
+        {
+            "name": "SalePayment",
+            "description": "SalePayment"
+        },
+        {
+            "name": "Shop",
+            "description": "Shop"
+        },
+        {
+            "name": "Supplier",
+            "description": "Supplier"
+        },
+        {
+            "name": "SupplierProduct",
+            "description": "SupplierProduct"
         }
     ]
 }

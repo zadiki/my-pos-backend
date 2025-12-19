@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Http\Controllers\Api;
+
 use App\Models\UserPermission;
 
 /**
@@ -9,7 +11,7 @@ use App\Models\UserPermission;
  * )
  *
  * @OA\Get(
- *     path="/user-permissions",
+ *     path="/api/user-permissions",
  *     summary="Get list of user permissions",
  *     tags={"UserPermissions"},
  *     @OA\Response(
@@ -19,7 +21,7 @@ use App\Models\UserPermission;
  * )
  *
  * @OA\Post(
- *     path="/user-permissions",
+ *     path="/api/user-permissions",
  *     summary="Create a new user permission",
  *     tags={"UserPermissions"},
  *     @OA\RequestBody(
@@ -36,7 +38,7 @@ use App\Models\UserPermission;
  * )
  *
  * @OA\Get(
- *     path="/user-permissions/{id}",
+ *     path="/api/user-permissions/{id}",
  *     summary="Get a user permission by ID",
  *     tags={"UserPermissions"},
  *     @OA\Parameter(
@@ -56,7 +58,7 @@ use App\Models\UserPermission;
  * )
  *
  * @OA\Put(
- *     path="/user-permissions/{id}",
+ *     path="/api/user-permissions/{id}",
  *     summary="Update a user permission",
  *     tags={"UserPermissions"},
  *     @OA\Parameter(
@@ -83,7 +85,7 @@ use App\Models\UserPermission;
  * )
  *
  * @OA\Delete(
- *     path="/user-permissions/{id}",
+ *     path="/api/user-permissions/{id}",
  *     summary="Delete a user permission",
  *     tags={"UserPermissions"},
  *     @OA\Parameter(
