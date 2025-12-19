@@ -5,6 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
+/**
+ * @OA\Schema(
+ *     schema="Inventory",
+ *     type="object",
+ *     @OA\Property(property="id", type="integer", example=1),
+ *     @OA\Property(property="product_id", type="integer", example=1),
+ *     @OA\Property(property="shop_id", type="integer", example=1),
+ *     @OA\Property(property="quantity", type="integer", example=10),
+ *     @OA\Property(property="reorder_level", type="integer", example=5),
+ *     @OA\Property(property="last_restocked_at", type="string", format="date-time"),
+ * )
+ */
 class Inventory extends Model
 {
     protected $fillable = [

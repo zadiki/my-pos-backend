@@ -5,6 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
+/**
+ * @OA\Schema(
+ *     schema="SupplierProduct",
+ *     type="object",
+ *     @OA\Property(property="id", type="integer", example=1),
+ *     @OA\Property(property="supplier_id", type="integer", example=1),
+ *     @OA\Property(property="product_id", type="integer", example=1),
+ *     @OA\Property(property="supplier_sku", type="string"),
+ *     @OA\Property(property="unit_price", type="number", format="float", example=10.00),
+ *     @OA\Property(property="moq", type="integer"),
+ *     @OA\Property(property="lead_time_days", type="integer"),
+ *     @OA\Property(property="status", type="string"),
+ * )
+ */
 class SupplierProduct extends Model
 {
     protected $fillable = [

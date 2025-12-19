@@ -9,14 +9,7 @@ use App\Models\InventoryChangeTransaction;
  *     name="InventoryChangeTransactions",
  *     description="API Endpoints for Inventory Change Transactions"
  * )
- */
-class InventoryChangeTransactionController extends BaseApiController
-{
-    protected string $modelClass = InventoryChangeTransaction::class;
-}
-
-
-/**
+ *
  * @OA\Get(
  *     path="/inventory-change-transactions",
  *     summary="Get list of inventory change transactions",
@@ -111,3 +104,7 @@ class InventoryChangeTransactionController extends BaseApiController
  *     )
  * )
  */
+class InventoryChangeTransactionController extends BaseApiController
+{
+    protected string $modelClass = InventoryChangeTransaction::class;
+}

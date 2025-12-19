@@ -9,19 +9,14 @@ use App\Models\Shop;
  *     name="Shop",
  *     description="Shop management"
  * )
- */
-
-
-/**
+ *
  * @OA\Get(
  *     path="/shops",
  *     tags={"Shop"},
  *     summary="List all shops",
  *     @OA\Response(response=200, description="Successful operation")
  * )
- */
-
-/**
+ *
  * @OA\Get(
  *     path="/shops/{id}",
  *     tags={"Shop"},
@@ -35,9 +30,7 @@ use App\Models\Shop;
  *     @OA\Response(response=200, description="Successful operation"),
  *     @OA\Response(response=404, description="Shop not found")
  * )
- */
-
-/**
+ *
  * @OA\Post(
  *     path="/shops",
  *     tags={"Shop"},
@@ -51,9 +44,7 @@ use App\Models\Shop;
  *     ),
  *     @OA\Response(response=201, description="Shop created")
  * )
- */
-
-/**
+ *
  * @OA\Put(
  *     path="/shops/{id}",
  *     tags={"Shop"},
@@ -74,9 +65,7 @@ use App\Models\Shop;
  *     @OA\Response(response=200, description="Shop updated"),
  *     @OA\Response(response=404, description="Shop not found")
  * )
- */
-
-/**
+ *
  * @OA\Delete(
  *     path="/shops/{id}",
  *     tags={"Shop"},

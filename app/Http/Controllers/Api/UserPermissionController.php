@@ -11,7 +11,7 @@ use App\Models\UserPermission;
  * )
  *
  * @OA\Get(
- *     path="/api/user-permissions",
+ *     path="/user-permissions",
  *     summary="Get list of user permissions",
  *     tags={"UserPermissions"},
  *     @OA\Response(
@@ -21,7 +21,7 @@ use App\Models\UserPermission;
  * )
  *
  * @OA\Post(
- *     path="/api/user-permissions",
+ *     path="/user-permissions",
  *     summary="Create a new user permission",
  *     tags={"UserPermissions"},
  *     @OA\RequestBody(
@@ -38,7 +38,7 @@ use App\Models\UserPermission;
  * )
  *
  * @OA\Get(
- *     path="/api/user-permissions/{id}",
+ *     path="/user-permissions/{id}",
  *     summary="Get a user permission by ID",
  *     tags={"UserPermissions"},
  *     @OA\Parameter(
@@ -58,7 +58,7 @@ use App\Models\UserPermission;
  * )
  *
  * @OA\Put(
- *     path="/api/user-permissions/{id}",
+ *     path="/user-permissions/{id}",
  *     summary="Update a user permission",
  *     tags={"UserPermissions"},
  *     @OA\Parameter(
@@ -85,7 +85,7 @@ use App\Models\UserPermission;
  * )
  *
  * @OA\Delete(
- *     path="/api/user-permissions/{id}",
+ *     path="/user-permissions/{id}",
  *     summary="Delete a user permission",
  *     tags={"UserPermissions"},
  *     @OA\Parameter(

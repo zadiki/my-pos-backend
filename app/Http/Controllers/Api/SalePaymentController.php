@@ -5,7 +5,12 @@ namespace App\Http\Controllers\Api;
 use App\Models\SalePayment;
 
 /**
- * @OA\Delete(
+ * @OA\Tag(
+ *     name="SalePayment",
+ *     description="Sale payment management"
+ * )
+ *
+ *  @OA\Delete(
  *     path="/sale-payments/{id}",
  *     tags={"SalePayment"},
  *     summary="Delete a sale payment",
@@ -18,23 +23,13 @@ use App\Models\SalePayment;
  *     @OA\Response(response=204, description="Sale payment deleted"),
  *     @OA\Response(response=404, description="Sale payment not found")
  * )
- */
-/**
- * @OA\Tag(
- *     name="SalePayment",
- *     description="Sale payment management"
- * )
- */
-/**
  * @OA\Get(
  *     path="/sale-payments",
  *     tags={"SalePayment"},
  *     summary="List all sale payments",
  *     @OA\Response(response=200, description="Successful operation")
  * )
- */
-
-/**
+ *
  * @OA\Get(
  *     path="/sale-payments/{id}",
  *     tags={"SalePayment"},
@@ -48,8 +43,7 @@ use App\Models\SalePayment;
  *     @OA\Response(response=200, description="Successful operation"),
  *     @OA\Response(response=404, description="Sale payment not found")
  * )
- */
-/**
+ *
  * @OA\Post(
  *     path="/sale-payments",
  *     tags={"SalePayment"},
@@ -63,8 +57,7 @@ use App\Models\SalePayment;
  *     ),
  *     @OA\Response(response=201, description="Sale payment created")
  * )
- */
-/**
+ *
  * @OA\Put(
  *     path="/sale-payments/{id}",
  *     tags={"SalePayment"},

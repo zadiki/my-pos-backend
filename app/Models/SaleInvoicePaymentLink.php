@@ -5,6 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @OA\Schema(
+ *     schema="SaleInvoicePaymentLink",
+ *     type="object",
+ *     @OA\Property(property="id", type="integer", example=1),
+ *     @OA\Property(property="sale_invoice_id", type="integer", example=1),
+ *     @OA\Property(property="sale_payment_id", type="integer", example=1),
+ *     @OA\Property(property="amount_applied", type="number", format="float", example=50.00),
+ * )
+ */
 class SaleInvoicePaymentLink extends Model
 {
     use HasFactory;

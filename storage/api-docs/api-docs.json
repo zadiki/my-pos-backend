@@ -5,14 +5,19 @@
         "description": "API documentation for My POS App backend.",
         "version": "1.0.0"
     },
+    "servers": [
+        {
+            "url": "/api"
+        }
+    ],
     "paths": {
-        "/api/login": {
+        "/login": {
             "post": {
                 "tags": [
                     "Auth"
                 ],
                 "summary": "Login user and get JWT token",
-                "operationId": "222b2625838e3c57e017987f73598fda",
+                "operationId": "67d6d0fdd54fba132e1b6f55ca254183",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -50,13 +55,13 @@
                 }
             }
         },
-        "/api/logout": {
+        "/logout": {
             "post": {
                 "tags": [
                     "Auth"
                 ],
                 "summary": "Logout user (invalidate token)",
-                "operationId": "ad65cbbd4e9f201619eae184a5961a98",
+                "operationId": "28d48c13fca984400ac8de99f54ee13a",
                 "responses": {
                     "200": {
                         "description": "Logged out successfully"
@@ -69,13 +74,13 @@
                 ]
             }
         },
-        "/api/refresh": {
+        "/refresh": {
             "post": {
                 "tags": [
                     "Auth"
                 ],
                 "summary": "Refresh JWT token",
-                "operationId": "f6409cd8d794404a6410b0767432b0f4",
+                "operationId": "43a6bea9efa4b685457298ce9505de70",
                 "responses": {
                     "200": {
                         "description": "Token refreshed"
@@ -88,13 +93,13 @@
                 ]
             }
         },
-        "/api/me": {
+        "/me": {
             "get": {
                 "tags": [
                     "Auth"
                 ],
                 "summary": "Get current authenticated user",
-                "operationId": "8367feff40ba10e43187792cad3132c1",
+                "operationId": "bc2032a379aa97707ccc61511897c120",
                 "responses": {
                     "200": {
                         "description": "Current user info"
@@ -230,7 +235,1754 @@
                 }
             }
         },
+        "/companies": {
+            "get": {
+                "tags": [
+                    "Company"
+                ],
+                "summary": "List all companies",
+                "operationId": "2764896b346a0c19c0ef52eac7bf331c",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Company"
+                ],
+                "summary": "Create a new company",
+                "operationId": "564c4440cb6ba7ff4cee6f804e3e8eb4",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Company created"
+                    }
+                }
+            }
+        },
+        "/companies/{id}": {
+            "get": {
+                "tags": [
+                    "Company"
+                ],
+                "summary": "Get a single company",
+                "operationId": "fa31aa68b60714fc4ae0d94ac85c84ee",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "404": {
+                        "description": "Company not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Company"
+                ],
+                "summary": "Update a company",
+                "operationId": "32b8264ed51bc42c316c0adfd2e2d7cc",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Company updated"
+                    },
+                    "404": {
+                        "description": "Company not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Company"
+                ],
+                "summary": "Delete a company",
+                "operationId": "7a640e36d86e012c5ba6afbd621ac07e",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Company deleted"
+                    },
+                    "404": {
+                        "description": "Company not found"
+                    }
+                }
+            }
+        },
+        "/inventory-change-transactions": {
+            "get": {
+                "tags": [
+                    "InventoryChangeTransactions"
+                ],
+                "summary": "Get list of inventory change transactions",
+                "operationId": "823a4e9dd0911309f0dd9358393b8589",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "InventoryChangeTransactions"
+                ],
+                "summary": "Create a new inventory change transaction",
+                "operationId": "7776e59cd95d54eb8524005ed17ab7c7",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/InventoryChangeTransaction"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    }
+                }
+            }
+        },
+        "/inventory-change-transactions/{id}": {
+            "get": {
+                "tags": [
+                    "InventoryChangeTransactions"
+                ],
+                "summary": "Get an inventory change transaction by ID",
+                "operationId": "8732469976cf786e2125a4cfb7e77227",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "InventoryChangeTransactions"
+                ],
+                "summary": "Update an inventory change transaction",
+                "operationId": "e15ec6500562289e87707df82f32f2b8",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/InventoryChangeTransaction"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Updated"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "InventoryChangeTransactions"
+                ],
+                "summary": "Delete an inventory change transaction",
+                "operationId": "d2e22a1bce4583991cb68e08308ddc49",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Deleted"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        },
+        "/inventories": {
+            "get": {
+                "tags": [
+                    "Inventory"
+                ],
+                "summary": "List all inventories",
+                "operationId": "4901bf09be7c6d70c5d7c27500b9c2dd",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Inventory"
+                ],
+                "summary": "Create a new inventory",
+                "operationId": "0d9bbbb1e03dd6d2fe630257fc7e2c3d",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Inventory created"
+                    }
+                }
+            }
+        },
+        "/inventories/{id}": {
+            "get": {
+                "tags": [
+                    "Inventory"
+                ],
+                "summary": "Get a single inventory",
+                "operationId": "479dd9712700f9e4200f83172a6e04ed",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "404": {
+                        "description": "Inventory not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Inventory"
+                ],
+                "summary": "Update an inventory",
+                "operationId": "74528886ea805e005643db9d78f2e7ab",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Inventory updated"
+                    },
+                    "404": {
+                        "description": "Inventory not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Inventory"
+                ],
+                "summary": "Delete an inventory",
+                "operationId": "30d0e1e1f6405594cdc3c0ec21382ab2",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Inventory deleted"
+                    },
+                    "404": {
+                        "description": "Inventory not found"
+                    }
+                }
+            }
+        },
+        "/permissions": {
+            "get": {
+                "tags": [
+                    "Permission"
+                ],
+                "summary": "List all permissions",
+                "operationId": "45d91852838e3b5ca5bfa9684c7b8499",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Permission"
+                ],
+                "summary": "Create a new permission",
+                "operationId": "0cb1353a596e6942e7b02058603703a8",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Permission created"
+                    }
+                }
+            }
+        },
+        "/permissions/{id}": {
+            "get": {
+                "tags": [
+                    "Permission"
+                ],
+                "summary": "Get a single permission",
+                "operationId": "a3af37744fa087cfd6f048f35c389850",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "404": {
+                        "description": "Permission not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Permission"
+                ],
+                "summary": "Update a permission",
+                "operationId": "fa184ef0acd4609bd726492b3282ae27",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Permission updated"
+                    },
+                    "404": {
+                        "description": "Permission not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Permission"
+                ],
+                "summary": "Delete a permission",
+                "operationId": "8af9589655b456e3fa629f93e5aaafaf",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Permission deleted"
+                    },
+                    "404": {
+                        "description": "Permission not found"
+                    }
+                }
+            }
+        },
+        "/products": {
+            "get": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "List all products",
+                "operationId": "e26b785f6cd7d571c4ed664fe113827c",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "Create a new product",
+                "operationId": "8576b911ff7a315b99b40e9ab8b664b2",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Product created"
+                    }
+                }
+            }
+        },
+        "/products/{id}": {
+            "get": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "Get a single product",
+                "operationId": "191e688faf851bb4096ca7a90e681325",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "404": {
+                        "description": "Product not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "Update a product",
+                "operationId": "0f747c834f1553e90e058b1e27507241",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Product updated"
+                    },
+                    "404": {
+                        "description": "Product not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "Delete a product",
+                "operationId": "357c76e05d72ca5fd0c2c8dd8d9d8f86",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Product deleted"
+                    },
+                    "404": {
+                        "description": "Product not found"
+                    }
+                }
+            }
+        },
+        "/purchases": {
+            "get": {
+                "tags": [
+                    "Purchase"
+                ],
+                "summary": "List all purchases",
+                "operationId": "4af8610ecc39e89061fd641f3584cca1",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Purchase"
+                ],
+                "summary": "Create a new purchase",
+                "operationId": "40a50a92dc96d3d902a69d4c255c0e47",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Purchase created"
+                    }
+                }
+            }
+        },
+        "/purchases/{id}": {
+            "get": {
+                "tags": [
+                    "Purchase"
+                ],
+                "summary": "Get a single purchase",
+                "operationId": "bd83db79c7145fd9aaf1f7a57d7955d6",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "404": {
+                        "description": "Purchase not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Purchase"
+                ],
+                "summary": "Update a purchase",
+                "operationId": "df22c739fc38177f931523f61fbb5ad8",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Purchase updated"
+                    },
+                    "404": {
+                        "description": "Purchase not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Purchase"
+                ],
+                "summary": "Delete a purchase",
+                "operationId": "f2f073aaf73aef3f7e9c03dc3f954b07",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Purchase deleted"
+                    },
+                    "404": {
+                        "description": "Purchase not found"
+                    }
+                }
+            }
+        },
+        "/purchase-details": {
+            "get": {
+                "tags": [
+                    "PurchaseDetail"
+                ],
+                "summary": "List all purchase details",
+                "operationId": "e4260a5ca928b7746378e77a635fb08e",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "PurchaseDetail"
+                ],
+                "summary": "Create a new purchase detail",
+                "operationId": "41027ecabc97988bf563d1463989ea89",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Purchase detail created"
+                    }
+                }
+            }
+        },
+        "/purchase-details/{id}": {
+            "get": {
+                "tags": [
+                    "PurchaseDetail"
+                ],
+                "summary": "Get a single purchase detail",
+                "operationId": "dcae3473a624b05ff3e92e6d6ad43c99",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "404": {
+                        "description": "Purchase detail not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "PurchaseDetail"
+                ],
+                "summary": "Update a purchase detail",
+                "operationId": "afd59704d3de1e93d628e834f4075d34",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Purchase detail updated"
+                    },
+                    "404": {
+                        "description": "Purchase detail not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "PurchaseDetail"
+                ],
+                "summary": "Delete a purchase detail",
+                "operationId": "2e751ed5e692f4271d88901c04bff449",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Purchase detail deleted"
+                    },
+                    "404": {
+                        "description": "Purchase detail not found"
+                    }
+                }
+            }
+        },
+        "/purchase-invoices": {
+            "get": {
+                "tags": [
+                    "PurchaseInvoice"
+                ],
+                "summary": "List all purchase invoices",
+                "operationId": "b5a0047760cf3010b4028f7de0091958",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "PurchaseInvoice"
+                ],
+                "summary": "Create a new purchase invoice",
+                "operationId": "c378b2a7f204417100a6aa7b6093a705",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Purchase invoice created"
+                    }
+                }
+            }
+        },
+        "/purchase-invoices/{id}": {
+            "get": {
+                "tags": [
+                    "PurchaseInvoice"
+                ],
+                "summary": "Get a single purchase invoice",
+                "operationId": "2fc91ceb445d627ff61d6268c7923ace",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "404": {
+                        "description": "Purchase invoice not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "PurchaseInvoice"
+                ],
+                "summary": "Update a purchase invoice",
+                "operationId": "d7599806141266e0417e3d4bbf74b44e",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Purchase invoice updated"
+                    },
+                    "404": {
+                        "description": "Purchase invoice not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "PurchaseInvoice"
+                ],
+                "summary": "Delete a purchase invoice",
+                "operationId": "0f2c880419a01a5429e44141c77dae8f",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Purchase invoice deleted"
+                    },
+                    "404": {
+                        "description": "Purchase invoice not found"
+                    }
+                }
+            }
+        },
+        "/purchase-invoice-payment-links": {
+            "get": {
+                "tags": [
+                    "PurchaseInvoicePaymentLink"
+                ],
+                "summary": "List all purchase invoice payment links",
+                "operationId": "7e6dfc0d1ba059150fe8bb42acc5ce54",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "PurchaseInvoicePaymentLink"
+                ],
+                "summary": "Create a new purchase invoice payment link",
+                "operationId": "b0aeb39f11e5f4a630563f1d384c30d5",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Purchase invoice payment link created"
+                    }
+                }
+            }
+        },
+        "/purchase-invoice-payment-links/{id}": {
+            "get": {
+                "tags": [
+                    "PurchaseInvoicePaymentLink"
+                ],
+                "summary": "Get a single purchase invoice payment link",
+                "operationId": "2770f522bf4ebe10c4dd4ab7d982c2c7",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "404": {
+                        "description": "Purchase invoice payment link not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "PurchaseInvoicePaymentLink"
+                ],
+                "summary": "Update a purchase invoice payment link",
+                "operationId": "66aa6cfc702a4b4f11eaae10b50fb9cc",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Purchase invoice payment link updated"
+                    },
+                    "404": {
+                        "description": "Purchase invoice payment link not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "PurchaseInvoicePaymentLink"
+                ],
+                "summary": "Delete a purchase invoice payment link",
+                "operationId": "f0043b80296b93475a2da538715485cf",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Purchase invoice payment link deleted"
+                    },
+                    "404": {
+                        "description": "Purchase invoice payment link not found"
+                    }
+                }
+            }
+        },
+        "/purchase-payments": {
+            "get": {
+                "tags": [
+                    "PurchasePayment"
+                ],
+                "summary": "List all purchase payments",
+                "operationId": "bef61895fcdaa48f58aad6564916c7dd",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "PurchasePayment"
+                ],
+                "summary": "Create a new purchase payment",
+                "operationId": "a0fbe25411273064f22c33cce13420ea",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Purchase payment created"
+                    }
+                }
+            }
+        },
+        "/purchase-payments/{id}": {
+            "get": {
+                "tags": [
+                    "PurchasePayment"
+                ],
+                "summary": "Get a single purchase payment",
+                "operationId": "94cd43deb098701e408c8a6627ac87c0",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "404": {
+                        "description": "Purchase payment not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "PurchasePayment"
+                ],
+                "summary": "Update a purchase payment",
+                "operationId": "f6999d8cf5ebb9e96a1c04cf0cec9659",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Purchase payment updated"
+                    },
+                    "404": {
+                        "description": "Purchase payment not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "PurchasePayment"
+                ],
+                "summary": "Delete a purchase payment",
+                "operationId": "089d6fa59a8faec367df20c5c6f84bf6",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Purchase payment deleted"
+                    },
+                    "404": {
+                        "description": "Purchase payment not found"
+                    }
+                }
+            }
+        },
+        "/sales": {
+            "get": {
+                "tags": [
+                    "Sale"
+                ],
+                "summary": "List all sales",
+                "operationId": "757015b68ec0d83a8c347a33d3e0f0fe",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Sale"
+                ],
+                "summary": "Create a new sale",
+                "operationId": "ef46f4e9b7cc0d0b49e61654314dd5e2",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Sale created"
+                    }
+                }
+            }
+        },
+        "/sales/{id}": {
+            "get": {
+                "tags": [
+                    "Sale"
+                ],
+                "summary": "Get a single sale",
+                "operationId": "9fd425e864ae96a5ea2930d595205cdb",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "404": {
+                        "description": "Sale not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Sale"
+                ],
+                "summary": "Update a sale",
+                "operationId": "d01798024447d3cab8cdd85801b9c5fb",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Sale updated"
+                    },
+                    "404": {
+                        "description": "Sale not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Sale"
+                ],
+                "summary": "Delete a sale",
+                "operationId": "3fc376ab0dc0bc77c9b966838f9e8709",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Sale deleted"
+                    },
+                    "404": {
+                        "description": "Sale not found"
+                    }
+                }
+            }
+        },
+        "/sale-details": {
+            "get": {
+                "tags": [
+                    "SaleDetail"
+                ],
+                "summary": "List all sale details",
+                "operationId": "c3dbffe7a73297ec3b4600d982f056aa",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "SaleDetail"
+                ],
+                "summary": "Create a new sale detail",
+                "operationId": "df13f513a80a1cfd62904160a07498d6",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Sale detail created"
+                    }
+                }
+            }
+        },
+        "/sale-details/{id}": {
+            "get": {
+                "tags": [
+                    "SaleDetail"
+                ],
+                "summary": "Get a single sale detail",
+                "operationId": "80ea8010603dae185fe394c968fb4396",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "404": {
+                        "description": "Sale detail not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "SaleDetail"
+                ],
+                "summary": "Update a sale detail",
+                "operationId": "7712bf8ae0a69e1b3a5a5fe2b98e401d",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Sale detail updated"
+                    },
+                    "404": {
+                        "description": "Sale detail not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "SaleDetail"
+                ],
+                "summary": "Delete a sale detail",
+                "operationId": "75c57bcde16d18ef2a855cbd3d193876",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Sale detail deleted"
+                    },
+                    "404": {
+                        "description": "Sale detail not found"
+                    }
+                }
+            }
+        },
+        "/sale-invoices": {
+            "get": {
+                "tags": [
+                    "SaleInvoice"
+                ],
+                "summary": "List all sale invoices",
+                "operationId": "615d7dbdc560571f96daa861d03140b6",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "SaleInvoice"
+                ],
+                "summary": "Create a new sale invoice",
+                "operationId": "c536760942029d2d5cc63894e692129c",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Sale invoice created"
+                    }
+                }
+            }
+        },
+        "/sale-invoices/{id}": {
+            "get": {
+                "tags": [
+                    "SaleInvoice"
+                ],
+                "summary": "Get a single sale invoice",
+                "operationId": "c82226c4c64171f9725fe79a5d775190",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "404": {
+                        "description": "Sale invoice not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "SaleInvoice"
+                ],
+                "summary": "Update a sale invoice",
+                "operationId": "67a3ed4e98ba103c1430dcca9f6378c2",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Sale invoice updated"
+                    },
+                    "404": {
+                        "description": "Sale invoice not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "SaleInvoice"
+                ],
+                "summary": "Delete a sale invoice",
+                "operationId": "76cde2a6d3f1bea2ae5a869c365d5d58",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Sale invoice deleted"
+                    },
+                    "404": {
+                        "description": "Sale invoice not found"
+                    }
+                }
+            }
+        },
+        "/sale-invoice-payment-links": {
+            "get": {
+                "tags": [
+                    "SaleInvoicePaymentLink"
+                ],
+                "summary": "List all sale invoice payment links",
+                "operationId": "e93366bea7697a32c07067b1bd74f9d8",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "SaleInvoicePaymentLink"
+                ],
+                "summary": "Create a new sale invoice payment link",
+                "operationId": "3ffd5cb5cfc7eaf1ea774645e842171e",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Sale invoice payment link created"
+                    }
+                }
+            }
+        },
+        "/sale-invoice-payment-links/{id}": {
+            "get": {
+                "tags": [
+                    "SaleInvoicePaymentLink"
+                ],
+                "summary": "Get a single sale invoice payment link",
+                "operationId": "f05f47bd91c143850850f0f87eaf1377",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "404": {
+                        "description": "Sale invoice payment link not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "SaleInvoicePaymentLink"
+                ],
+                "summary": "Update a sale invoice payment link",
+                "operationId": "1a7e5b13850b57882777546f8fdd468c",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Sale invoice payment link updated"
+                    },
+                    "404": {
+                        "description": "Sale invoice payment link not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "SaleInvoicePaymentLink"
+                ],
+                "summary": "Delete a sale invoice payment link",
+                "operationId": "b25b7fa618534f2aef6d5b214bfe4469",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Sale invoice payment link deleted"
+                    },
+                    "404": {
+                        "description": "Sale invoice payment link not found"
+                    }
+                }
+            }
+        },
         "/sale-payments/{id}": {
+            "get": {
+                "tags": [
+                    "SalePayment"
+                ],
+                "summary": "Get a single sale payment",
+                "operationId": "310d505fdb96801f4359e93fda66aa3f",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "404": {
+                        "description": "Sale payment not found"
+                    }
+                }
+            },
             "put": {
                 "tags": [
                     "SalePayment"
@@ -265,9 +2017,166 @@
                         "description": "Sale payment not found"
                     }
                 }
+            },
+            "delete": {
+                "tags": [
+                    "SalePayment"
+                ],
+                "summary": "Delete a sale payment",
+                "operationId": "8832d53c37ae146f800a5aac7a591c04",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Sale payment deleted"
+                    },
+                    "404": {
+                        "description": "Sale payment not found"
+                    }
+                }
+            }
+        },
+        "/sale-payments": {
+            "get": {
+                "tags": [
+                    "SalePayment"
+                ],
+                "summary": "List all sale payments",
+                "operationId": "dc66e5cbcc15f213bcfffd7c9741ea7a",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "SalePayment"
+                ],
+                "summary": "Create a new sale payment",
+                "operationId": "3d807c00279de068fc51ccb8189608ed",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Sale payment created"
+                    }
+                }
+            }
+        },
+        "/shops": {
+            "get": {
+                "tags": [
+                    "Shop"
+                ],
+                "summary": "List all shops",
+                "operationId": "4a5ba44aff1934ce0f1cb0c335dba1a4",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Shop"
+                ],
+                "summary": "Create a new shop",
+                "operationId": "c7a906bde8b73fa4690a9f768ac6db19",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Shop created"
+                    }
+                }
             }
         },
         "/shops/{id}": {
+            "get": {
+                "tags": [
+                    "Shop"
+                ],
+                "summary": "Get a single shop",
+                "operationId": "85bbc335740ec8946003594d34996d01",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "404": {
+                        "description": "Shop not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Shop"
+                ],
+                "summary": "Update a shop",
+                "operationId": "10e9239d79889df46fcb1c2e103f386e",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Shop updated"
+                    },
+                    "404": {
+                        "description": "Shop not found"
+                    }
+                }
+            },
             "delete": {
                 "tags": [
                     "Shop"
@@ -294,7 +2203,103 @@
                 }
             }
         },
+        "/suppliers": {
+            "get": {
+                "tags": [
+                    "Supplier"
+                ],
+                "summary": "List all suppliers",
+                "operationId": "880dea28ea6be2c0748bfd5895726b27",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Supplier"
+                ],
+                "summary": "Create a new supplier",
+                "operationId": "658eee9a3a5922bcc10d9e13b637c4b5",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Supplier created"
+                    }
+                }
+            }
+        },
         "/suppliers/{id}": {
+            "get": {
+                "tags": [
+                    "Supplier"
+                ],
+                "summary": "Get a single supplier",
+                "operationId": "7d893aa4dc7a3c49058854f71b35ac3b",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "404": {
+                        "description": "Supplier not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Supplier"
+                ],
+                "summary": "Update a supplier",
+                "operationId": "6092f70b7812608de6dd450a9eb0ae2a",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Supplier updated"
+                    },
+                    "404": {
+                        "description": "Supplier not found"
+                    }
+                }
+            },
             "delete": {
                 "tags": [
                     "Supplier"
@@ -321,7 +2326,103 @@
                 }
             }
         },
+        "/supplier-products": {
+            "get": {
+                "tags": [
+                    "SupplierProduct"
+                ],
+                "summary": "List all supplier products",
+                "operationId": "c0f08c2807c75d75f074933efb25191f",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "SupplierProduct"
+                ],
+                "summary": "Create a new supplier product",
+                "operationId": "f98daf20191be87ecf7a232c85cc1057",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Supplier product created"
+                    }
+                }
+            }
+        },
         "/supplier-products/{id}": {
+            "get": {
+                "tags": [
+                    "SupplierProduct"
+                ],
+                "summary": "Get a single supplier product",
+                "operationId": "1ef2fc2abeffac982434c04744bda706",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "404": {
+                        "description": "Supplier product not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "SupplierProduct"
+                ],
+                "summary": "Update a supplier product",
+                "operationId": "6c22fdda8032b9bc1b657d3484d472c3",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Supplier product updated"
+                    },
+                    "404": {
+                        "description": "Supplier product not found"
+                    }
+                }
+            },
             "delete": {
                 "tags": [
                     "SupplierProduct"
@@ -348,13 +2449,13 @@
                 }
             }
         },
-        "/api/users": {
+        "/users": {
             "get": {
                 "tags": [
                     "User"
                 ],
                 "summary": "List all users",
-                "operationId": "566aed8efb436ca506e0ef51a032ecd9",
+                "operationId": "7208c29037df2b8bb02499ba39ed8a78",
                 "responses": {
                     "200": {
                         "description": "Successful operation"
@@ -366,7 +2467,7 @@
                     "User"
                 ],
                 "summary": "Create a new user",
-                "operationId": "be551c1d694a01c164966f58bfa77013",
+                "operationId": "262eb5ca1fdea354023c0a8870442c1e",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -400,13 +2501,13 @@
                 }
             }
         },
-        "/api/users/{id}": {
+        "/users/{id}": {
             "get": {
                 "tags": [
                     "User"
                 ],
                 "summary": "Get a single user",
-                "operationId": "6f51bd5fa2dddcd25e44cfa53dcbd10a",
+                "operationId": "6946bbab7898f59a09e3c8e529a38907",
                 "parameters": [
                     {
                         "name": "id",
@@ -431,7 +2532,7 @@
                     "User"
                 ],
                 "summary": "Update a user",
-                "operationId": "070e37fc9aff78ae73860751bc990ed3",
+                "operationId": "05028d02ea3e9a99abd6260cfe05b179",
                 "parameters": [
                     {
                         "name": "id",
@@ -477,7 +2578,7 @@
                     "User"
                 ],
                 "summary": "Delete a user",
-                "operationId": "0b4133ed462528a5e648b88ead11e929",
+                "operationId": "b3d28da5dc9de7fc1bd425f93b54ff7b",
                 "parameters": [
                     {
                         "name": "id",
@@ -498,13 +2599,13 @@
                 }
             }
         },
-        "/api/user-permissions": {
+        "/user-permissions": {
             "get": {
                 "tags": [
                     "UserPermissions"
                 ],
                 "summary": "Get list of user permissions",
-                "operationId": "1325d27a676770e4a297a3b6e02e84c6",
+                "operationId": "0cab25782dc765c4da6fdc8e44e09fee",
                 "responses": {
                     "200": {
                         "description": "Successful operation"
@@ -516,7 +2617,7 @@
                     "UserPermissions"
                 ],
                 "summary": "Create a new user permission",
-                "operationId": "38337680054ae24cbe36926606c92e58",
+                "operationId": "0fdf947537f3842ad9c9c3893e6cbef4",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -534,13 +2635,13 @@
                 }
             }
         },
-        "/api/user-permissions/{id}": {
+        "/user-permissions/{id}": {
             "get": {
                 "tags": [
                     "UserPermissions"
                 ],
                 "summary": "Get a user permission by ID",
-                "operationId": "0a1188354e88466f7ea7aab4e3c3d4e4",
+                "operationId": "1538ca801f69f8edd1cc1f1d205ef0a0",
                 "parameters": [
                     {
                         "name": "id",
@@ -565,7 +2666,7 @@
                     "UserPermissions"
                 ],
                 "summary": "Update a user permission",
-                "operationId": "b2b1564279771e2a729fa6aa4c8a668e",
+                "operationId": "60d77ef744833323d0b49ce1ccfeea9c",
                 "parameters": [
                     {
                         "name": "id",
@@ -600,7 +2701,7 @@
                     "UserPermissions"
                 ],
                 "summary": "Delete a user permission",
-                "operationId": "9b566ea540cac3a7794ca546920b8aa1",
+                "operationId": "b01b7dae4ec5a665c2f9bb7582b1d107",
                 "parameters": [
                     {
                         "name": "id",
@@ -624,6 +2725,673 @@
     },
     "components": {
         "schemas": {
+            "Company": {
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "name": {
+                        "type": "string",
+                        "example": "Acme Inc"
+                    },
+                    "email": {
+                        "type": "string",
+                        "example": "info@acme.com"
+                    },
+                    "phone": {
+                        "type": "string",
+                        "example": "+1234567890"
+                    },
+                    "address": {
+                        "type": "string",
+                        "example": "123 Main St"
+                    },
+                    "city": {
+                        "type": "string",
+                        "example": "New York"
+                    },
+                    "state": {
+                        "type": "string",
+                        "example": "NY"
+                    },
+                    "postal_code": {
+                        "type": "string",
+                        "example": 10001
+                    },
+                    "country": {
+                        "type": "string",
+                        "example": "US"
+                    }
+                },
+                "type": "object"
+            },
+            "Inventory": {
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "product_id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "shop_id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "quantity": {
+                        "type": "integer",
+                        "example": 10
+                    },
+                    "reorder_level": {
+                        "type": "integer",
+                        "example": 5
+                    },
+                    "last_restocked_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            },
+            "InventoryChangeTransaction": {
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "inventory_id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "user_id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "type": {
+                        "type": "string",
+                        "example": "in"
+                    },
+                    "quantity_change": {
+                        "type": "integer",
+                        "example": 5
+                    },
+                    "quantity_before": {
+                        "type": "integer",
+                        "example": 10
+                    },
+                    "quantity_after": {
+                        "type": "integer",
+                        "example": 15
+                    },
+                    "reference_type": {
+                        "type": "string"
+                    },
+                    "reference_id": {
+                        "type": "integer"
+                    },
+                    "notes": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "Permission": {
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "name": {
+                        "type": "string",
+                        "example": "view_products"
+                    },
+                    "description": {
+                        "type": "string",
+                        "example": "Allows viewing products"
+                    }
+                },
+                "type": "object"
+            },
+            "Product": {
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "sku": {
+                        "type": "string",
+                        "example": "SKU001"
+                    },
+                    "name": {
+                        "type": "string",
+                        "example": "Product Name"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "price": {
+                        "type": "number",
+                        "format": "float",
+                        "example": 19.99
+                    },
+                    "cost": {
+                        "type": "number",
+                        "format": "float",
+                        "example": 10
+                    },
+                    "shop_id": {
+                        "type": "integer",
+                        "example": 1
+                    }
+                },
+                "type": "object"
+            },
+            "Purchase": {
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "po_number": {
+                        "type": "string",
+                        "example": "PO001"
+                    },
+                    "shop_id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "supplier_id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "user_id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "subtotal": {
+                        "type": "number",
+                        "format": "float",
+                        "example": 100
+                    },
+                    "tax": {
+                        "type": "number",
+                        "format": "float",
+                        "example": 10
+                    },
+                    "discount": {
+                        "type": "number",
+                        "format": "float",
+                        "example": 5
+                    },
+                    "total": {
+                        "type": "number",
+                        "format": "float",
+                        "example": 105
+                    },
+                    "status": {
+                        "type": "string"
+                    },
+                    "notes": {
+                        "type": "string"
+                    },
+                    "purchase_date": {
+                        "type": "string"
+                    },
+                    "expected_delivery_date": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "PurchaseDetail": {
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "purchase_id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "product_id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "quantity": {
+                        "type": "integer",
+                        "example": 10
+                    },
+                    "received_quantity": {
+                        "type": "integer",
+                        "example": 10
+                    },
+                    "unit_price": {
+                        "type": "number",
+                        "format": "float",
+                        "example": 19.99
+                    },
+                    "total": {
+                        "type": "number",
+                        "format": "float",
+                        "example": 199.9
+                    }
+                },
+                "type": "object"
+            },
+            "PurchaseInvoice": {
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "purchase_id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "invoice_number": {
+                        "type": "string",
+                        "example": "INV001"
+                    },
+                    "invoice_date": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "subtotal": {
+                        "type": "number",
+                        "format": "float",
+                        "example": 100
+                    },
+                    "tax": {
+                        "type": "number",
+                        "format": "float",
+                        "example": 10
+                    },
+                    "discount": {
+                        "type": "number",
+                        "format": "float",
+                        "example": 5
+                    },
+                    "total": {
+                        "type": "number",
+                        "format": "float",
+                        "example": 105
+                    },
+                    "status": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "PurchaseInvoicePaymentLink": {
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "purchase_invoice_id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "purchase_payment_id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "amount_applied": {
+                        "type": "number",
+                        "format": "float",
+                        "example": 50
+                    }
+                },
+                "type": "object"
+            },
+            "PurchasePayment": {
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "purchase_id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "purchase_invoice_id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "user_id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "payment_date": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "amount": {
+                        "type": "number",
+                        "format": "float",
+                        "example": 50
+                    },
+                    "method": {
+                        "type": "string"
+                    },
+                    "reference": {
+                        "type": "string"
+                    },
+                    "notes": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "Sale": {
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "invoice_number": {
+                        "type": "string",
+                        "example": "INV001"
+                    },
+                    "shop_id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "user_id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "subtotal": {
+                        "type": "number",
+                        "format": "float",
+                        "example": 100
+                    },
+                    "tax": {
+                        "type": "number",
+                        "format": "float",
+                        "example": 10
+                    },
+                    "discount": {
+                        "type": "number",
+                        "format": "float",
+                        "example": 5
+                    },
+                    "total": {
+                        "type": "number",
+                        "format": "float",
+                        "example": 105
+                    },
+                    "payment_method": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "type": "string"
+                    },
+                    "notes": {
+                        "type": "string"
+                    },
+                    "sale_date": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "SaleDetail": {
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "sale_id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "product_id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "quantity": {
+                        "type": "integer",
+                        "example": 10
+                    },
+                    "unit_price": {
+                        "type": "number",
+                        "format": "float",
+                        "example": 19.99
+                    },
+                    "total": {
+                        "type": "number",
+                        "format": "float",
+                        "example": 199.9
+                    }
+                },
+                "type": "object"
+            },
+            "SaleInvoice": {
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "sale_id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "invoice_number": {
+                        "type": "string",
+                        "example": "INV001"
+                    },
+                    "invoice_date": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "subtotal": {
+                        "type": "number",
+                        "format": "float",
+                        "example": 100
+                    },
+                    "tax": {
+                        "type": "number",
+                        "format": "float",
+                        "example": 10
+                    },
+                    "discount": {
+                        "type": "number",
+                        "format": "float",
+                        "example": 5
+                    },
+                    "total": {
+                        "type": "number",
+                        "format": "float",
+                        "example": 105
+                    },
+                    "status": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "SaleInvoicePaymentLink": {
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "sale_invoice_id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "sale_payment_id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "amount_applied": {
+                        "type": "number",
+                        "format": "float",
+                        "example": 50
+                    }
+                },
+                "type": "object"
+            },
+            "SalePayment": {
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "sale_id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "sale_invoice_id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "user_id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "payment_date": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "amount": {
+                        "type": "number",
+                        "format": "float",
+                        "example": 50
+                    },
+                    "method": {
+                        "type": "string"
+                    },
+                    "reference": {
+                        "type": "string"
+                    },
+                    "notes": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "Shop": {
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "phone": {
+                        "type": "string"
+                    },
+                    "address": {
+                        "type": "string"
+                    },
+                    "city": {
+                        "type": "string"
+                    },
+                    "state": {
+                        "type": "string"
+                    },
+                    "postal_code": {
+                        "type": "string"
+                    },
+                    "country": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "Supplier": {
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "phone": {
+                        "type": "string"
+                    },
+                    "contact_person": {
+                        "type": "string"
+                    },
+                    "address": {
+                        "type": "string"
+                    },
+                    "city": {
+                        "type": "string"
+                    },
+                    "state": {
+                        "type": "string"
+                    },
+                    "postal_code": {
+                        "type": "string"
+                    },
+                    "country": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "SupplierProduct": {
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "supplier_id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "product_id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "supplier_sku": {
+                        "type": "string"
+                    },
+                    "unit_price": {
+                        "type": "number",
+                        "format": "float",
+                        "example": 10
+                    },
+                    "moq": {
+                        "type": "integer"
+                    },
+                    "lead_time_days": {
+                        "type": "integer"
+                    },
+                    "status": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "User": {
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
             "UserPermission": {
                 "required": [
                     "user_id",
@@ -665,28 +3433,84 @@
             "description": "Generic resource operations"
         },
         {
+            "name": "Company",
+            "description": "Company management"
+        },
+        {
+            "name": "InventoryChangeTransactions",
+            "description": "API Endpoints for Inventory Change Transactions"
+        },
+        {
+            "name": "Inventory",
+            "description": "Inventory management"
+        },
+        {
+            "name": "Permission",
+            "description": "Permission management"
+        },
+        {
+            "name": "Product",
+            "description": "Product management"
+        },
+        {
+            "name": "Purchase",
+            "description": "Purchase management"
+        },
+        {
+            "name": "PurchaseDetail",
+            "description": "Purchase detail management"
+        },
+        {
+            "name": "PurchaseInvoice",
+            "description": "Purchase invoice management"
+        },
+        {
+            "name": "PurchaseInvoicePaymentLink",
+            "description": "Purchase invoice payment link management"
+        },
+        {
+            "name": "PurchasePayment",
+            "description": "Purchase payment management"
+        },
+        {
+            "name": "Sale",
+            "description": "Sale management"
+        },
+        {
+            "name": "SaleDetail",
+            "description": "Sale detail management"
+        },
+        {
+            "name": "SaleInvoice",
+            "description": "Sale invoice management"
+        },
+        {
+            "name": "SaleInvoicePaymentLink",
+            "description": "Sale invoice payment link management"
+        },
+        {
+            "name": "SalePayment",
+            "description": "Sale payment management"
+        },
+        {
+            "name": "Shop",
+            "description": "Shop management"
+        },
+        {
+            "name": "Supplier",
+            "description": "Supplier management"
+        },
+        {
+            "name": "SupplierProduct",
+            "description": "Supplier product management"
+        },
+        {
             "name": "User",
             "description": "User management"
         },
         {
             "name": "UserPermissions",
             "description": "API Endpoints for User Permissions"
-        },
-        {
-            "name": "SalePayment",
-            "description": "SalePayment"
-        },
-        {
-            "name": "Shop",
-            "description": "Shop"
-        },
-        {
-            "name": "Supplier",
-            "description": "Supplier"
-        },
-        {
-            "name": "SupplierProduct",
-            "description": "SupplierProduct"
         }
     ]
 }

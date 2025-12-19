@@ -17,7 +17,7 @@ class UserController extends Controller
 {
     /**
      * @OA\Get(
-     *     path="/api/users",
+     *     path="/users",
      *     tags={"User"},
      *     summary="List all users",
      *     @OA\Response(response=200, description="Successful operation")
@@ -30,7 +30,7 @@ class UserController extends Controller
 
     /**
      * @OA\Get(
-     *     path="/api/users/{id}",
+     *     path="/users/{id}",
      *     tags={"User"},
      *     summary="Get a single user",
      *     @OA\Parameter(
@@ -50,7 +50,7 @@ class UserController extends Controller
 
     /**
      * @OA\Post(
-     *     path="/api/users",
+     *     path="/users",
      *     tags={"User"},
      *     summary="Create a new user",
      *     @OA\RequestBody(
@@ -86,7 +86,7 @@ class UserController extends Controller
 
     /**
      * @OA\Put(
-     *     path="/api/users/{id}",
+     *     path="/users/{id}",
      *     tags={"User"},
      *     summary="Update a user",
      *     @OA\Parameter(
@@ -130,7 +130,7 @@ class UserController extends Controller
 
     /**
      * @OA\Delete(
-     *     path="/api/users/{id}",
+     *     path="/users/{id}",
      *     tags={"User"},
      *     summary="Delete a user",
      *     @OA\Parameter(

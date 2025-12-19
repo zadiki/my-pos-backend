@@ -9,18 +9,14 @@ use App\Models\Supplier;
  *     name="Supplier",
  *     description="Supplier management"
  * )
- */
-
-/**
+ *
  * @OA\Get(
  *     path="/suppliers",
  *     tags={"Supplier"},
  *     summary="List all suppliers",
  *     @OA\Response(response=200, description="Successful operation")
  * )
- */
-
-/**
+ *
  * @OA\Get(
  *     path="/suppliers/{id}",
  *     tags={"Supplier"},
@@ -34,9 +30,7 @@ use App\Models\Supplier;
  *     @OA\Response(response=200, description="Successful operation"),
  *     @OA\Response(response=404, description="Supplier not found")
  * )
- */
-
-/**
+ *
  * @OA\Post(
  *     path="/suppliers",
  *     tags={"Supplier"},
@@ -50,9 +44,6 @@ use App\Models\Supplier;
  *     ),
  *     @OA\Response(response=201, description="Supplier created")
  * )
- */
-
-/**
  * @OA\Put(
  *     path="/suppliers/{id}",
  *     tags={"Supplier"},
@@ -73,9 +64,7 @@ use App\Models\Supplier;
  *     @OA\Response(response=200, description="Supplier updated"),
  *     @OA\Response(response=404, description="Supplier not found")
  * )
- */
-
-/**
+ *
  * @OA\Delete(
  *     path="/suppliers/{id}",
  *     tags={"Supplier"},

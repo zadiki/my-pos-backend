@@ -23,7 +23,7 @@ class AuthController extends Controller
 
     /**
      * @OA\Post(
-     *     path="/api/login",
+     *     path="/login",
      *     summary="Login user and get JWT token",
      *     tags={"Auth"},
      *     @OA\RequestBody(
@@ -85,7 +85,7 @@ class AuthController extends Controller
 
     /**
      * @OA\Post(
-     *     path="/api/logout",
+     *     path="/logout",
      *     summary="Logout user (invalidate token)",
      *     tags={"Auth"},
      *     security={{"bearerAuth":{}}},
@@ -106,7 +106,7 @@ class AuthController extends Controller
 
     /**
      * @OA\Post(
-     *     path="/api/refresh",
+     *     path="/refresh",
      *     summary="Refresh JWT token",
      *     tags={"Auth"},
      *     security={{"bearerAuth":{}}},
@@ -132,7 +132,7 @@ class AuthController extends Controller
 
     /**
      * @OA\Get(
-     *     path="/api/me",
+     *     path="/me",
      *     summary="Get current authenticated user",
      *     tags={"Auth"},
      *     security={{"bearerAuth":{}}},
